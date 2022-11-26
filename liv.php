@@ -25,7 +25,7 @@
             <?php
                 if(isset($_GET["id"])){
                     $id = $_GET["id"];
-                    $sorgu = $conn->prepare("SELECT * FROM tweet WHERE id=$id ORDER BY sendDate DESC");
+                    $sorgu = $conn->prepare("SELECT * FROM liv WHERE id=$id ORDER BY sendDate DESC");
                     $sorgu->execute();
                     $cikti = $sorgu->fetch(PDO::FETCH_ASSOC);
                     ?>
@@ -41,7 +41,7 @@
                                     <textarea type="text" name="text" class="form-control boxBackgroundColor" id="exampleFormControlTextarea1" style="height: 300px;" required><?php echo $cikti["text"] ?></textarea>
                                 </div>
                                 <div id="passwordHelpBlock" class="form-text titles" style="margin-top: -15px;">Liv başlığı maksimum 25 karakter ve içerik maksimum 180 karakter içermelidir.</div>
-                                <button name="editTweet" value="<?php echo $id ?>" type="submit" class="btn btn-primary">Düzenle</button>
+                                <button name="editLiv" value="<?php echo $id ?>" type="submit" class="btn btn-primary">Düzenle</button>
                             </form>
                         </div>
                     <?php
@@ -59,7 +59,7 @@
                                     <textarea name="text" class="form-control boxBackgroundColor" id="exampleFormControlTextarea1" style="height: 300px;" placeholder="Metin" rows="3" required></textarea>
                                 </div>
                                 <div id="passwordHelpBlock" class="form-text titles" style="margin-top: -15px;">Liv başlığı maksimum 25 karakter ve içerik maksimum 180 karakter içermelidir.</div>
-                                <br><button name="addTweet" type="submit" class="btn btn-primary container">Paylaş</button>
+                                <br><button name="addLiv" type="submit" class="btn btn-primary container">Paylaş</button>
                             </form>
                         </div>
                     <?php

@@ -1,7 +1,7 @@
 <?php
     include("sections.php");
     include("includes/timeDifference.php");
-    $sorgu = $conn->prepare("SELECT * FROM tweet ORDER BY sendDate DESC");
+    $sorgu = $conn->prepare("SELECT * FROM liv ORDER BY sendDate DESC");
     $sorgu->execute();
 ?>
 <!doctype html>
@@ -78,8 +78,8 @@
                                                             <form action="includes/transactions.php" method="POST">
                                                                 <li><button type="submit" class="dropdown-item">Beğen</button></li>
                                                                 <li><button type="submit" class="dropdown-item">Yorum Yap</button></li>
-                                                                <li><a name="editTweet" href="tweet.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
-                                                                <li><button name="deleteTweet" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
+                                                                <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
+                                                                <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
                                                             </form>
                                                         <?php }else{ ?>
                                                             <li><button type="submit" class="dropdown-item">Beğen</button></li>

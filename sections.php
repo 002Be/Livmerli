@@ -48,7 +48,7 @@
                                     <ul class="dropdown-menu dropdown-menu-dark">
                                         <li><a class="dropdown-item" href="profile.php">Profilim</a></li>
                                         <li><hr class="dropdown-divider"></li>
-                                        <li><a class="dropdown-item" href="tweet.php">Liv Gönder</a></li>
+                                        <li><a class="dropdown-item" href="liv.php">Liv Gönder</a></li>
                                         <li><a class="dropdown-item" href="friends.php">Arkadaşlar</a></li>
                                         <li><a class="dropdown-item" href="notifications.php">Bildirimler</a></li>
                                         <li><hr class="dropdown-divider"></li>

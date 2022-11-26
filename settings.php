@@ -26,7 +26,7 @@
                 <h1><strong class="titles">Ayarlar</strong></h1>
                 <hr>
                 <h3 class="titles">Genel Ayarlar</h3>
-                <div class="form-check form-switch">
+                <div class="float-center mt-3 mx-auto" style="width: 400px;">
                     <form method="get">
                         <select name="theme" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                             <option selected>Tema Ayarı</option>
@@ -38,7 +38,46 @@
                     </form>
                 </div>
                 <hr>
+                <h3 class="titles">Kullanıcı Ayarlar</h3>
+                <div class="float-center mt-3 mx-auto" style="width: 400px;">
+                    <form id="contactForm" action="includes/transactions.php" method="post">
+                        <div class="col-auto">
+                            <div class="input-group">
+                            <!-- <div class="input-group-text">@</div> -->
+                            <input name="username" type="text" class="form-control" id="autoSizingInputGroup" placeholder="Kullanıcı adı" required>
+                            </div>
+                        </div>
+                        <div class="mb-3 mt-3">
+                            <input name="mail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-posta adresi" required>
+                        </div>
+                        <div class="mb-3">
+                            <input name="password" type="password" class="form-control" placeholder="Eski Parola" required>
+                        </div>
+                        <div class="mb-3">
+                            <input name="newpassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Yeni Parola" required>
+                        </div>
+                        <div class="mb-3">
+                            <input name="newrepassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Yeni Parola tekrar" required>
+                            <div id="passwordHelpBlock" class="form-text">Şifreniz 8-20 karakter uzunluğunda olmalı, harf ve rakamlardan oluşmalı ve boşluk, özel karakter veya emoji içermemelidir.</div>
+                        </div>
+                        <button name="updateAccount" type="submit" class="btn btn-primary container">Güncelle</button>
+                        <div class="mb-3 text-center">
+                        <?php
+                            if(isset($_GET["durum"])=="basarisiz"){
+                                ?>
+                                    <p>Kullanıcı adı veya mail adresi zaten kullanılmaktadır</p> <!-- Ayrı ayrı hata verecek -->
+                                <?php
+                            }else{
+                                ?> <br> <?php
+                            } ?>
+                        </div>
+                    </form>
+                </div>
+                <hr>
                 <h3 class="titles">Diğer Ayarlar</h3>
+                <form action="includes/transactions.php" method="post">
+                    <button name="deleteAccount" value="theme" type="submit" class="btn btn-danger container mt-3" style="width: 400px;">Hesabı Kalıcı Olarak Sil</button>
+                </form>
             </div>
         </div>
         <!-- Contents} -->
