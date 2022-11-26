@@ -1,5 +1,6 @@
 /admin
 
+/includes/functions.php
 /includes/connection.php
 /includes/transactions.php
 /includes/notifications.php

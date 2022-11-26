@@ -25,7 +25,7 @@
             <div class="text-center">
                 <h1><strong class="titles">Ayarlar</strong></h1>
                 <hr>
-                <h3 class="titles">Genel Ayarlar</h3>
+                <h3 class="titles">Tema</h3>
                 <div class="float-center mt-3 mx-auto" style="width: 400px;">
                     <form method="get">
                         <select name="theme" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
@@ -38,26 +38,28 @@
                     </form>
                 </div>
                 <hr>
-                <h3 class="titles">Kullanıcı Ayarlar</h3>
+                <h3 class="titles">Kullanıcı Bilgileri</h3>
                 <div class="float-center mt-3 mx-auto" style="width: 400px;">
                     <form id="contactForm" action="includes/transactions.php" method="post">
+                        <?php $sorgu = $conn->prepare("SELECT * FROM userbio WHERE username=?");
+                        $sorgu->execute([$_SESSION["Username"]]);
+                        $cikti = $sorgu->fetch(PDO::FETCH_ASSOC) ?>
                         <div class="col-auto">
                             <div class="input-group">
-                            <!-- <div class="input-group-text">@</div> -->
-                            <input name="username" type="text" class="form-control" id="autoSizingInputGroup" placeholder="Kullanıcı adı" required>
+                            <input value="<?php echo $cikti["username"]; ?>" name="username" type="text" class="form-control" id="autoSizingInputGroup" placeholder="Kullanıcı adı" required>
                             </div>
                         </div>
                         <div class="mb-3 mt-3">
-                            <input name="mail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-posta adresi" required>
+                            <input value="<?php echo $cikti["mail"]; ?>" name="mail" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-posta adresi" required>
                         </div>
                         <div class="mb-3">
                             <input name="password" type="password" class="form-control" placeholder="Eski Parola" required>
                         </div>
                         <div class="mb-3">
-                            <input name="newpassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Yeni Parola" required>
+                            <input name="newPassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Yeni Parola" required>
                         </div>
                         <div class="mb-3">
-                            <input name="newrepassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Yeni Parola tekrar" required>
+                            <input name="newRepassword" type="password" class="form-control" id="exampleInputPassword1" placeholder="Yeni Parola tekrar" required>
                             <div id="passwordHelpBlock" class="form-text">Şifreniz 8-20 karakter uzunluğunda olmalı, harf ve rakamlardan oluşmalı ve boşluk, özel karakter veya emoji içermemelidir.</div>
                         </div>
                         <button name="updateAccount" type="submit" class="btn btn-primary container">Güncelle</button>
@@ -71,6 +73,19 @@
                                 ?> <br> <?php
                             } ?>
                         </div>
+                    </form>
+                </div>
+                <hr>
+                <h3 class="titles">Hakkımda</h3>
+                <div class="float-center mt-3 mx-auto" style="width: 400px;">
+                    <form id="contactForm" action="includes/transactions.php" method="post">
+                        <?php $sorgu = $conn->prepare("SELECT about FROM userbio WHERE username=?");
+                        $sorgu->execute([$_SESSION["Username"]]);
+                        $cikti = $sorgu->fetch(PDO::FETCH_ASSOC) ?>
+                        <div class="mb-3 mt-3">
+                            <textarea type="text" name="about" class="form-control boxBackgroundColor" id="exampleFormControlTextarea1" style="height: 300px;" required><?php echo $cikti["about"] ?></textarea>
+                        </div>
+                            <button type="submit" class="btn btn-primary container">Güncelle</button>
                     </form>
                 </div>
                 <hr>

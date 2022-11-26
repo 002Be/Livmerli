@@ -1,6 +1,6 @@
 <?php
     include("sections.php");
-    include("includes/timeDifference.php");
+
     $sorgu = $conn->prepare("SELECT * FROM liv ORDER BY sendDate DESC");
     $sorgu->execute();
 ?>
@@ -30,10 +30,10 @@
                     if(isset($_SESSION["GirisDurumu"]) && $_SESSION["GirisDurumu"]==true){ ?>
                         <div class="btn-group">
                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Arkadaş Livleri
+                                Arkadaşlar
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="index.php">Tüm Livler</a></li>
+                                <li><a class="dropdown-item" href="index.php">Global</a></li>
                                 <!-- <li><a class="dropdown-item" href="index.php?arkadaslar">Sadece Arkadaşlar</a></li> -->
                             </ul>
                         </div>
@@ -48,11 +48,11 @@
                     if(isset($_SESSION["GirisDurumu"]) && $_SESSION["GirisDurumu"]==true){ ?>
                         <div class="btn-group">
                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Tüm Livler
+                                Global
                             </button>
                             <ul class="dropdown-menu">
                                 <!-- <li><a class="dropdown-item" href="index.php">Tüm Livler</a></li> -->
-                                <li><a class="dropdown-item" href="index.php?arkadaslar">Sadece Arkadaşlar</a></li>
+                                <li><a class="dropdown-item" href="index.php?arkadaslar">Arkadaşlar</a></li>
                             </ul>
                         </div>
                     <?php

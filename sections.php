@@ -2,6 +2,7 @@
     session_start();
     include("includes/connection.php");
     include("includes/notifications.php");
+    include("includes/functions.php");
 ?>
 <!-- Theme -->
 <?php

@@ -1,6 +1,5 @@
 <?php
     include("sections.php");
-    include("includes/timeDifference.php");
 ?>
 <!doctype html>
 <html lang="en">
@@ -23,8 +22,10 @@
                 <h1><strong class="titles">Profilim</strong></h1>
                 <hr>
                 <h3 class="titles">Hakkımda</h3>
-                <p class="titles">Hakımda</p>
-                <button type="button" class="btn btn-outline-info">Düzenle</button>
+                <?php $sorgu = $conn->prepare("SELECT about FROM userbio WHERE username=?");
+                $sorgu->execute([$_SESSION["Username"]]);
+                $cikti = $sorgu->fetch(PDO::FETCH_ASSOC) ?>
+                <p class="titles"><?php echo $cikti["about"] ?></p>
                 <!-- <img src="https://picsum.photos/id/386/50/50" class="rounded mx-auto d-block" alt="...profilResmi..."> -->
                 <!-- <textarea name="text" class="form-control mt-3" id="exampleFormControlTextarea1" style="height: 150px;" placeholder="Hakkımda" rows="3" required></textarea> -->
                 <!-- <button style="margin-top: 50px; width: 100px;" type="submit" class="btn btn-outline-primary">Kaydet</button> -->
