@@ -39,12 +39,56 @@
                             </button>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="index.php">Global</a></li>
-                                <!-- <li><a class="dropdown-item" href="index.php?arkadaslar">Sadece Arkadaşlar</a></li> -->
                             </ul>
                         </div>
                     <?php
                     }
-                    //koşullu while sorgusu eklenecek : Eğer arkadaş olarak ekliyse göster
+                    while($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){
+                        $sorgu2 = $conn->prepare("SELECT * FROM friends");
+                        $sorgu2->execute();
+                        while($cikti2 = $sorgu2->fetch(PDO::FETCH_ASSOC)){
+                            if($cikti["username"]==$cikti2["friendUsername"]){
+                                ?>
+                                    <div class="card mt-3">
+                                    <div class="card-header opacity-75 boxBackgroundColor">
+                                            <span style="float: left;"> <a style="color: dimgrey; text-decoration: none;" href="profile.php?user=<?php echo $cikti["username"];?>"><?php echo $cikti["username"];?></a></span>
+                                            <span style="float: right;">
+                                                <div class="btn-group dropend">
+                                                    <?php if(isset($_SESSION["Username"])){ ?>
+                                                        <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                            <?php timeDiff($cikti["sendDate"]); ?>
+                                                        </button>
+                                                    <?php }else{ ?>
+                                                            <span class="badge rounded-pill text-bg-secondary" style="float: right;"><?php timeDiff($cikti["sendDate"]); ?></span>
+                                                    <?php } ?>
+                                                        <ul class="dropdown-menu">
+                                                            <?php if($_SESSION["Username"]==$cikti["username"]){ ?>
+                                                                <form action="includes/transactions.php" method="POST">
+                                                                    <li><button type="button" class="dropdown-item">Beğen</button></li>
+                                                                    <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
+                                                                    <li><button type="button" class="dropdown-item">Kaydet</button></li>
+                                                                    <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
+                                                                    <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
+                                                                </form>
+                                                            <?php }else{ ?>
+                                                                <li><button type="button" class="dropdown-item">Beğen</button></li>
+                                                                <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
+                                                                <li><button type="button" class="dropdown-item">Kaydet</button></li>
+                                                                <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
+                                                            <?php } ?>
+                                                        </ul>
+                                                </div>
+                                            </span>
+                                        </div>
+                                        <div class="card-body boxBackgroundColor">
+                                            <h5 class="card-title"><?php echo $cikti["title"] ?></h5>
+                                            <p class="card-text"><?php echo $cikti["text"] ?></p>
+                                        </div>
+                                    </div>
+                                <?php
+                            }
+                        }
+                    }
                 }else{ ?>
                     <div class="text-center">
                         <h1><strong class="titles">Tüm Livler</strong></h1>
@@ -56,7 +100,6 @@
                                 Global
                             </button>
                             <ul class="dropdown-menu">
-                                <!-- <li><a class="dropdown-item" href="index.php">Tüm Livler</a></li> -->
                                 <li><a class="dropdown-item" href="index.php?arkadaslar">Arkadaşlar</a></li>
                             </ul>
                         </div>
