@@ -6,5 +6,5 @@ PHP bilgilerimi pekiştirmek amacıyla başladığım Livmerli projem, insanlar�
 ## Durum
 - 28.11.2022 | Profiller arası geçiş özelliği eklendi.
 
-## License
+## Lisans
 Proje [MIT License](./License) altında yayınlanmaktadır.
