@@ -21,6 +21,11 @@
 
         <!-- {Contents -->
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
+            <h1> 
+                <?php if(isset($deger)){
+                    echo $deger;
+                } ?>
+            </h1>
             <?php
                 if(isset($_GET["arkadaslar"])){ ?>
                     <div class="text-center">
@@ -62,8 +67,7 @@
                             ?>
                                 <div class="card mt-3">
                                 <div class="card-header opacity-75 boxBackgroundColor">
-                                        <span style="float: left;"><?php echo $cikti["username"];?></span>
-                                        <!-- <span class="badge rounded-pill text-bg-secondary" style="float: center;"><?php timeDiff($cikti["sendDate"]); ?></span> -->
+                                        <span style="float: left;"> <a style="color: dimgrey; text-decoration: none;" href="profile.php?user=<?php echo $cikti["username"];?>"><?php echo $cikti["username"];?></a></span>
                                         <span style="float: right;">
                                             <div class="btn-group dropend">
                                                 <?php if(isset($_SESSION["Username"])){ ?>
@@ -76,15 +80,17 @@
                                                     <ul class="dropdown-menu">
                                                         <?php if($_SESSION["Username"]==$cikti["username"]){ ?>
                                                             <form action="includes/transactions.php" method="POST">
-                                                                <li><button type="submit" class="dropdown-item">Beğen</button></li>
-                                                                <li><button type="submit" class="dropdown-item">Yorum Yap</button></li>
+                                                                <li><button type="button" class="dropdown-item">Beğen</button></li>
+                                                                <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
+                                                                <li><button type="button" class="dropdown-item">Kaydet</button></li>
                                                                 <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
                                                                 <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
                                                             </form>
                                                         <?php }else{ ?>
-                                                            <li><button type="submit" class="dropdown-item">Beğen</button></li>
-                                                            <li><button type="submit" class="dropdown-item">Yorum Yap</button></li>
-                                                            <li><button type="submit" class="dropdown-item">Şikayet Et</button></li>
+                                                            <li><button type="button" class="dropdown-item">Beğen</button></li>
+                                                            <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
+                                                            <li><button type="button" class="dropdown-item">Kaydet</button></li>
+                                                            <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
                                                         <?php } ?>
                                                     </ul>
                                             </div>

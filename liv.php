@@ -1,5 +1,6 @@
 <?php
     include("sections.php");
+    control();
 ?>
 <!doctype html>
 <html lang="en">

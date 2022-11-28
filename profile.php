@@ -17,40 +17,60 @@
 
 
         <!-- {Contents -->
+        <?php
+            if(isset($_GET["user"])){
+                $user = $_GET["user"];
+            }
+        ?>
+
+
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
             <div class="text-center">
-                <h1><strong class="titles">Profilim</strong></h1>
+                <h1><strong class="titles"> <?php echo $user; ?> </strong></h1>
                 <hr>
-                <h3 class="titles">Hakkımda</h3>
+                <h3 class="titles">Hakkında</h3>
                 <?php $sorgu = $conn->prepare("SELECT about FROM userbio WHERE username=?");
-                $sorgu->execute([$_SESSION["Username"]]);
+                $sorgu->execute([$user]);
                 $cikti = $sorgu->fetch(PDO::FETCH_ASSOC) ?>
                 <p class="titles"><?php echo $cikti["about"] ?></p>
                 <!-- <img src="https://picsum.photos/id/386/50/50" class="rounded mx-auto d-block" alt="...profilResmi..."> -->
                 <!-- <textarea name="text" class="form-control mt-3" id="exampleFormControlTextarea1" style="height: 150px;" placeholder="Hakkımda" rows="3" required></textarea> -->
                 <!-- <button style="margin-top: 50px; width: 100px;" type="submit" class="btn btn-outline-primary">Kaydet</button> -->
                 <hr>
-                <h3 class="titles">Livlerim</h3>
+                <h3 class="titles">Livler</h3>
                 <form action="includes/transactions.php" method="POST">
                     <?php
-                        $sorgu = $conn->prepare("SELECT * FROM liv ORDER BY sendDate DESC");
-                        $sorgu->execute();
+                        $sorgu = $conn->prepare("SELECT * FROM liv WHERE username=? AND status=1 ORDER BY sendDate DESC");
+                        $sorgu->execute([$user]);
                         while ($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)) {
-                            if($_SESSION["Username"]==$cikti["username"] && $cikti["status"]==1){
                             ?>
                                 <div class="card mt-3">
                                     <div class="card-header opacity-75 boxBackgroundColor">
                                         <span style="float: left;"><?php echo $cikti["username"];?></span>
-                                        <!-- <span class="badge rounded-pill text-bg-secondary" style="float: center;"><?php timeDiff($cikti["sendDate"]); ?></span> -->
                                         <span style="float: right;">
                                             <div class="btn-group dropend">
-                                                <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                    <?php timeDiff($cikti["sendDate"]); ?>
-                                                </button>
-                                                <ul class="dropdown-menu">
-                                                    <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item" href="#">Düzenle</a></li>
-                                                    <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item" href="#">Sil</button></li>
-                                                </ul>
+                                                <?php if(isset($_SESSION["Username"])){ ?>
+                                                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                                        <?php timeDiff($cikti["sendDate"]); ?>
+                                                    </button>
+                                                <?php }else{ ?>
+                                                        <span class="badge rounded-pill text-bg-secondary" style="float: right;"><?php timeDiff($cikti["sendDate"]); ?></span>
+                                                <?php } ?>
+                                                    <ul class="dropdown-menu">
+                                                        <?php if($_SESSION["Username"]==$cikti["username"]){ ?>
+                                                            <form action="includes/transactions.php" method="POST">
+                                                                <li><button type="button" class="dropdown-item">Beğen</button></li>
+                                                                <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
+                                                                <li><button type="button" class="dropdown-item">Kaydet</button></li>
+                                                                <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
+                                                                <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
+                                                            </form>
+                                                        <?php }else{ ?>
+                                                            <li><button type="button" class="dropdown-item">Beğen</button></li>
+                                                            <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
+                                                            <li><button type="button" class="dropdown-item">Kaydet</button></li>
+                                                            <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
+                                                    <?php } ?>
                                             </div>
                                         </span>
                                     </div>
@@ -60,7 +80,6 @@
                                     </div>
                                 </div>
                             <?php
-                            }
                         }
                     ?>
                 </form>

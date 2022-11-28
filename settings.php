@@ -1,8 +1,14 @@
 <?php
     include("sections.php");
+    control();
+
     if(isset($_GET["theme"])){
         if($_GET["theme"]=="1"){$_SESSION["theme"]="light";}
         if($_GET["theme"]=="2"){$_SESSION["theme"]="dark";}
+    }
+    if(isset($_GET["lang"])){
+        if($_GET["lang"]=="1"){$_SESSION["lang"]="tr";}
+        if($_GET["lang"]=="2"){$_SESSION["lang"]="en";}
     }
 ?>
 <!doctype html>
@@ -32,7 +38,11 @@
                             <option selected>Tema Ayarı</option>
                             <option value="1">Aydınlık Tema</option></a>
                             <option value="2">Karanlık Tema</option>
-                            <!-- <option value="3">Tam Siyah Tema</option> -->
+                        </select>
+                        <select name="lang" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                            <option selected>Dil Ayarı</option>
+                            <option value="1">Türkçe</option></a>
+                            <option value="2">English</option>
                         </select>
                         <button name="save" value="theme" type="submit" class="btn btn-primary container">Kaydet</button>
                     </form>

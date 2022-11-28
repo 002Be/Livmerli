@@ -3,6 +3,16 @@
     include("includes/connection.php");
     include("includes/notifications.php");
     include("includes/functions.php");
+
+    // if(empty($_SESSION["lang"])){
+    //     include("includes/lang_tr.php");  //Varsayılan dil TR
+    // }else{
+    //     if ($_SESSION["SiteDili"] == "tr") {
+    //         include("includes/lang_tr.php");
+    //     }else{
+    //         include("includes/lang_en.php");
+    //     }
+    // }
 ?>
 <!-- Theme -->
 <?php
@@ -47,7 +57,7 @@
                                     <?php echo $_SESSION["Username"]; ?>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
-                                        <li><a class="dropdown-item" href="profile.php">Profilim</a></li>
+                                        <li><a class="dropdown-item" href="profile.php?user=<?php echo $_SESSION["Username"]; ?>">Profilim</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="liv.php">Liv Gönder</a></li>
                                         <li><a class="dropdown-item" href="friends.php">Arkadaşlar</a></li>
