@@ -2,4 +2,4 @@
 
 
 ## License
-Proje [MIT License](./License.md) altında yayınlanır.
+Proje [MIT License](./License.md) altında yayınlanmaktadır.
