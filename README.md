@@ -4,6 +4,8 @@ Ayrıntılı bilgi projenin ilerleyen zamanlarında eklenecektir, ilk büyük PH
 PHP bilgilerimi pekiştirmek amacıyla başladığım Livmerli projem, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçlar.
 
 ## Durum
+- 28.11.2022 | Sadece arkadaş Livlerini görme eklendi.
+- 28.11.2022 | Arkadaşlık isteği gönderme eklendi.
 - 28.11.2022 | Profiller arası geçiş özelliği eklendi.
 
 ## Lisans
