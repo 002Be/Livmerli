@@ -29,7 +29,7 @@
             <form id="contactForm" action="includes/transactions.php" method="post" style="margin-bottom: 100px">
                 <div class="input-group mb-3 float-center mx-auto" style="width: 400px;">
                     <input name="requestUsername" type="text" class="form-control" placeholder="Kullanıcı Adı" aria-label="Username" aria-describedby="basic-addon1" required>
-                    <button name="requestFriend" class="btn btn-outline-secondary" type="submit" id="button-addon1">Ekle</button>
+                    <button name="requestFriend" class="btn btn-outline-secondary" type="submit" id="button-addon1">İstek Gönder</button>
                 </div>
             </form>
             <?php

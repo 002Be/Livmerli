@@ -21,18 +21,13 @@
 
         <!-- {Contents -->
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
-            <h1> 
-                <?php if(isset($deger)){
-                    echo $deger;
-                } ?>
-            </h1>
             <?php
                 if(isset($_GET["arkadaslar"])){ ?>
                     <div class="text-center">
                         <h1><strong class="titles">Arkadaş Livleri</strong></h1>
                     </div>
                 <?php
-                    if(isset($_SESSION["GirisDurumu"]) && $_SESSION["GirisDurumu"]==true){ ?>
+                    if(isset($_SESSION["GirisDurumu"])==true){ ?>
                         <div class="btn-group">
                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Arkadaşlar
@@ -47,20 +42,16 @@
                         $sorgu2 = $conn->prepare("SELECT * FROM friends");
                         $sorgu2->execute();
                         while($cikti2 = $sorgu2->fetch(PDO::FETCH_ASSOC)){
-                            if($cikti["username"]==$cikti2["friendUsername"]){
+                            if($_SESSION["Username"]==$cikti2["username"] && $cikti["status"]==1){
                                 ?>
                                     <div class="card mt-3">
                                     <div class="card-header opacity-75 boxBackgroundColor">
-                                            <span style="float: left;"> <a style="color: dimgrey; text-decoration: none;" href="profile.php?user=<?php echo $cikti["username"];?>"><?php echo $cikti["username"];?></a></span>
+                                            <span style="float: left;"> <a style="color: dimgrey; text-decoration: none;" href="profile.php?user=<?php echo $cikti2["friendUsername"];?>"><?php echo $cikti2["friendUsername"];?></a></span>
                                             <span style="float: right;">
                                                 <div class="btn-group dropend">
-                                                    <?php if(isset($_SESSION["Username"])){ ?>
                                                         <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
                                                             <?php timeDiff($cikti["sendDate"]); ?>
                                                         </button>
-                                                    <?php }else{ ?>
-                                                            <span class="badge rounded-pill text-bg-secondary" style="float: right;"><?php timeDiff($cikti["sendDate"]); ?></span>
-                                                    <?php } ?>
                                                         <ul class="dropdown-menu">
                                                             <?php if($_SESSION["Username"]==$cikti["username"]){ ?>
                                                                 <form action="includes/transactions.php" method="POST">
@@ -94,7 +85,7 @@
                         <h1><strong class="titles">Tüm Livler</strong></h1>
                     </div>
                 <?php
-                    if(isset($_SESSION["GirisDurumu"]) && $_SESSION["GirisDurumu"]==true){ ?>
+                    if(isset($_SESSION["GirisDurumu"])==true){ ?>
                         <div class="btn-group">
                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Global
