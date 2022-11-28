@@ -28,12 +28,14 @@
             </div>
             <form id="contactForm" action="includes/transactions.php" method="post" style="margin-bottom: 100px">
                 <div class="input-group mb-3 float-center mx-auto" style="width: 400px;">
-                    <input name="friendUsername" type="text" class="form-control" placeholder="Kullanıcı Adı" aria-label="Username" aria-describedby="basic-addon1" required>
-                    <button name="addFriend" class="btn btn-outline-secondary" type="submit" id="button-addon1">Ekle</button>
+                    <input name="requestUsername" type="text" class="form-control" placeholder="Kullanıcı Adı" aria-label="Username" aria-describedby="basic-addon1" required>
+                    <button name="requestFriend" class="btn btn-outline-secondary" type="submit" id="button-addon1">Ekle</button>
                 </div>
             </form>
             <?php
-                while($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){ ?>
+                while($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){ 
+                    if($_SESSION["Username"]==$cikti["username"]){?>
+                
                     <div class="card mt-3 float-center mx-auto" style="width: 30rem;">
                         <div class="btn-group dropend">
                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -47,6 +49,7 @@
                             </ul>
                         </div>
                     </div> <?php
+                    }
                 } ?>
         </div>
         <!-- Contents} -->
