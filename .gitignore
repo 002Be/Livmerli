@@ -1,12 +1,8 @@
 /admin
 
-/includes/lang_tr.php
-/includes/lang_en.php
 /includes/functions.php
 /includes/connection.php
 /includes/transactions.php
-/includes/notifications.php
-/includes/timeDifference.php
 
 /friends.php
 /bildirim.html
