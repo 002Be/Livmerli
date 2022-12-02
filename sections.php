@@ -17,6 +17,7 @@
 <?php
     function meta(){?>
         <style>
+            
             <?php
                 if($_SESSION["theme"]=="dark"){
                     ?>
@@ -61,6 +62,7 @@
                                         <li><a class="dropdown-item" href="liv.php">Liv Gönder</a></li>
                                         <li><a class="dropdown-item" href="friends.php">Arkadaşlar</a></li>
                                         <li><a class="dropdown-item" href="notifications.php">Bildirimler</a></li>
+                                        <li><a class="dropdown-item" href="save.php">Kaydedilenler</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="settings.php">Ayarlar</a></li>
                                         <li><a class="dropdown-item" href="includes/transactions.php?exit">Çıkış Yap</a></li>

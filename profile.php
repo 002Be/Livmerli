@@ -66,10 +66,12 @@
                                                                 <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
                                                             </form>
                                                         <?php }else{ ?>
-                                                            <li><button type="button" class="dropdown-item">Beğen</button></li>
-                                                            <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
-                                                            <li><button type="button" class="dropdown-item">Kaydet</button></li>
-                                                            <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
+                                                            <form action="includes/transactions.php" method="POST">
+                                                                <li><button type="button" class="dropdown-item">Beğen</button></li>
+                                                                <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
+                                                                <li><button type="button" class="dropdown-item">Kaydet</button></li>
+                                                                <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
+                                                            </form>
                                                     <?php } ?>
                                             </div>
                                         </span>
