@@ -99,7 +99,7 @@
                     </form>
                 </div>
                 <hr>
-                <h3 class="titles">Diğer Ayarlar</h3>
+                <h3 class="titles">Diğer</h3>
                 <form action="includes/transactions.php" method="post">
                     <button name="deleteAccount" value="theme" type="submit" class="btn btn-danger container mt-3" style="width: 400px;">Hesabı Kalıcı Olarak Sil</button>
                 </form>

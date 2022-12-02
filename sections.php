@@ -57,6 +57,7 @@
                                     <?php echo $_SESSION["Username"]; ?>
                                     </a>
                                     <ul class="dropdown-menu dropdown-menu-dark">
+                                        <li><a class="dropdown-item" href="index.php">Anasayfa</a></li>
                                         <li><a class="dropdown-item" href="profile.php?user=<?php echo $_SESSION["Username"]; ?>">Profilim</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="liv.php">Liv Gönder</a></li>

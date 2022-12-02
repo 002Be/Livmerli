@@ -55,17 +55,13 @@
                                                             <ul class="dropdown-menu">
                                                                 <?php if($_SESSION["Username"]==$cikti["username"]){ ?>
                                                                     <form action="includes/transactions.php" method="POST">
-                                                                        <li><button type="button" class="dropdown-item">Beğen</button></li>
-                                                                        <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
-                                                                        <li><button name="deleteSaveLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Kayıttan Kaldır</button></li>
+                                                                        <li><button name="saveLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Kayıttan Kaldır</button></li>
                                                                         <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
                                                                         <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
                                                                     </form>
                                                                 <?php }else{ ?>
                                                                     <form action="includes/transactions.php" method="POST">
-                                                                        <li><button type="button" class="dropdown-item">Beğen</button></li>
-                                                                        <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
-                                                                        <li><button name="deleteSaveLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Kayıttan Kaldır</button></li>
+                                                                        <li><button name="saveLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Kayıttan Kaldır</button></li>
                                                                         <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
                                                                     </form>
                                                             <?php } ?>

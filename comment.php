@@ -42,10 +42,12 @@
                 </div>
             </div>
             <div>
-                <button type="button" class="btn" style="background-color: gainsboro;"><img src="images/heart.png" alt="Beğen"></button>
-                <button type="button" class="btn" style="background-color: gainsboro;"><img src="images/save.png" alt="Kaydet"></button>
-                <button type="button" class="btn" style="background-color: gainsboro;" data-bs-toggle="modal" data-bs-target="#commentLiv"><img src="images/chat.png" alt="Yorum Yap"></button>
-                <button type="button" class="btn" style="background-color: gainsboro;"><img src="images/flag.png" alt="Şikayet Et"></button>
+                <form action="includes/transactions.php" method="POST">
+                    <button type="submit" class="btn" style="background-color: gainsboro;" name="likeLiv" value="<?php echo $_GET["id"]; ?>"><img src="images/heart.png" alt="Beğen"></button>
+                    <button type="submit" class="btn" style="background-color: gainsboro;" name="saveLiv" value="<?php echo $_GET["id"]; ?>"><img src="images/save.png" alt="Kaydet"></button>
+                    <button type="button" class="btn" style="background-color: gainsboro;" data-bs-toggle="modal" data-bs-target="#commentLiv"><img src="images/chat.png" alt="Yorum Yap"></button>
+                    <button type="button" class="btn" style="background-color: gainsboro;"><img src="images/flag.png" alt="Şikayet Et"></button>
+                </form>
             </div>
             <hr>
             <?php
@@ -90,7 +92,7 @@
                 </div>
                 <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
-                        <button name="addComment" value="<?php echo $_GET["id"]; ?>" type="submit" class="btn btn-primary">Gönder</button>
+                        <button name="addCommentLiv" value="<?php echo $_GET["id"]; ?>" type="submit" class="btn btn-primary">Gönder</button>
                         </form>
                     </div>
                 </div>

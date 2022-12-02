@@ -5,6 +5,7 @@ Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçl
 İlk büyük PHP projem, kendi kendime çalışarak sosyal web sitesinde barınması gereken tüm özellikleri koymaya çalışıyorum. Ayrıntılı bilgi sayfası projenin ilerleyen zamanlarında eklenecektir.
 
 # Durum
+- 02.11.2022 | Anasayfada bulunan beğen, kaydet, yorum yap, şikayet et, düzenle ve sil butonları live girince gözüksün şeklinde değiştirilmiştir.
 - 02.11.2022 | Yorumlar sayfasında değişiklikler yapıldı.
 - 02.11.2022 | Liv'e yorum ekleme özelliği eklendi.
 - 30.11.2022 | Yorumlar sayfası eklendi.
