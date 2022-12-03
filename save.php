@@ -2,7 +2,7 @@
     include("sections.php");
     control();
 
-    $sorgu = $conn->prepare("SELECT * FROM liv");
+    $sorgu = $conn->prepare("SELECT * FROM liv WHERE status=1 ORDER BY sendDate DESC");
     $sorgu->execute();
 ?>
 <!doctype html>
@@ -29,8 +29,8 @@
 
 
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
-            <div class="text-center">
-                <h1><strong class="titles">Kaydedilenler</strong></h1>
+            <div>
+                <h1 class="text-center"><strong class="titles">Kaydedilenler</strong></h1>
                 <hr>
                 <form action="includes/transactions.php" method="POST">
                     <?php
@@ -40,39 +40,53 @@
                             while($cikti2 = $sorgu2->fetch(PDO::FETCH_ASSOC)){
                                 if($cikti["id"]==$cikti2["livId"]){
                                     ?>
-                                        <div class="card mt-3">
-                                            <div class="card-header opacity-75 boxBackgroundColor">
-                                                <span style="float: left;"><?php echo $cikti["username"];?></span>
-                                                <span style="float: right;">
-                                                    <div class="btn-group dropend">
-                                                        <?php if(isset($_SESSION["Username"])){ ?>
-                                                            <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                                <?php timeDiff($cikti["sendDate"]); ?>
-                                                            </button>
-                                                        <?php }else{ ?>
-                                                                <span class="badge rounded-pill text-bg-secondary" style="float: right;"><?php timeDiff($cikti["sendDate"]); ?></span>
-                                                        <?php } ?>
-                                                            <ul class="dropdown-menu">
-                                                                <?php if($_SESSION["Username"]==$cikti["username"]){ ?>
-                                                                    <form action="includes/transactions.php" method="POST">
-                                                                        <li><button name="saveLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Kayıttan Kaldır</button></li>
-                                                                        <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
-                                                                        <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
-                                                                    </form>
-                                                                <?php }else{ ?>
-                                                                    <form action="includes/transactions.php" method="POST">
-                                                                        <li><button name="saveLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Kayıttan Kaldır</button></li>
-                                                                        <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
-                                                                    </form>
-                                                            <?php } ?>
-                                                    </div>
-                                                </span>
-                                            </div>
-                                            <div class="card-body boxBackgroundColor">
-                                                <h5 class="card-title"><?php echo $cikti["title"] ?></h5>
-                                                <p class="card-text"><?php echo $cikti["text"] ?></p>
-                                            </div>
+                                    <div class="card mt-3">
+                                    <div class="card-header opacity-75 boxBackgroundColor">
+                                        <span style="float: left;"> <a style="color: dimgrey; text-decoration: none;" href="profile.php?user=<?php echo $cikti["username"];?>"><?php echo $cikti["username"];?></a></span>
+                                        <div class="dropend">
+                                            <button class="btn-menu-button-color" data-bs-toggle="dropdown" aria-expanded="false" style="float: right; margin-left: 13px; margin-top: -2px; border: 0px;">
+                                                <img src="assets/images/menu.png">
+                                            </button>
+                                            <ul class="dropdown-menu">
+                                            <form action="includes/transactions.php" method="POST">
+                                                <button type="submit" class="btn" name="likeLiv" value="<?php echo $cikti["id"]; ?>" style="<?php likeBackColor($cikti["id"]); ?>; margin-left: 7px;"><img src="assets/images/heart.png" alt="Beğen"></button>
+                                                <a href="comment.php?id=<?php echo $cikti["id"]; ?>" class="btn" style="background-color: gainsboro;"><img src="assets/images/chat.png" alt="Yorum Yap"></a>
+                                                <button type="submit" class="btn" name="saveLiv" value="<?php echo $cikti["id"]; ?>" style="<?php saveBackColor($cikti["id"]); ?>;"><img src="assets/images/save.png" alt="Kaydet"></button>
+                                                <a href="comment.php?id=<?php echo $cikti["id"]; ?>" class="btn" style="margin-right: 7px; background-color: gainsboro;"><img src="assets/images/flag.png" alt="Şikayet Et"></a>
+                                                <?php
+                                                if($_SESSION["Username"]==$cikti["username"]){ ?>
+                                                <a href="liv.php?id=<?php echo $cikti["id"]; ?>" class="btn" style="background-color: gainsboro;"><img src="assets/images/edit.png" alt="Düzenle"></a>
+                                                <button type="submit" class="btn" style="background-color: gainsboro; margin-right: 7px;" name="deleteLiv" value="<?php echo $cikti["id"]; ?>"><img src="assets/images/delete4.png" alt="Sil"></button>
+                                                <?php
+                                                } ?>
+                                            </form>
+                                            </ul>
                                         </div>
+                                        <div class="btn-group dropend" style="float: right;">
+                                            <span class="badge rounded-pill text-bg-secondary" style="float: right; margin-top: 2px;"><?php timeDiff($cikti["sendDate"]); ?></span>
+                                        </div>
+                                    </div>
+                                    <div class="card-body boxBackgroundColor">
+                                        <a style="color: black; margin-bottom: 0px; text-decoration: none;" href="comment.php?id=<?php echo $cikti["id"]; ?>">
+                                            <h5 class="card-title"><?php echo $cikti["title"] ?></h5>
+                                            <p class="card-text"><?php echo $cikti["text"] ?></p>
+                                        </a>
+                                    </div>
+                                    <?php
+                                        $sorgu3 = $conn->prepare("SELECT * FROM liv_comment WHERE livId=? ORDER BY sendDate DESC LIMIT 5");
+                                        $sorgu3->execute([$cikti["id"]]);
+                                        $counter = $sorgu3->rowCount();
+                                        if($counter>0){ ?>
+                                                <a style="color: black; margin-bottom: 0px; text-decoration: none;" href="comment.php?id=<?php echo $cikti["id"]; ?>">
+                                                <div class="card-footer opacity-75 boxBackgroundColor"><?php
+                                                    while ($cikti3 = $sorgu3->fetch(PDO::FETCH_ASSOC)){ ?>
+                                                        <p style="margin-bottom: 0px;"><?php echo $cikti3["username"]." : ".$cikti3["text"]; ?></p>
+                                                    <?php } ?>
+                                                </div>
+                                            </a> <?php
+                                        }
+                                    ?>
+                                </div>
                                     <?php
                                 }
                             }

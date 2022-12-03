@@ -16,8 +16,8 @@
 <!-- Theme -->
 <?php
     function meta(){?>
+        <link rel="stylesheet" href="assets/css/style.css"/>
         <style>
-            
             <?php
                 if($_SESSION["theme"]=="dark"){
                     ?>
@@ -28,6 +28,9 @@
                             color: rgb(242, 242, 242);
                         }
                     .boxBackgroundColor{
+                        background-color: rgb(179, 179, 179);
+                    }
+                    .btn-menu-button-color{
                         background-color: rgb(179, 179, 179);
                     }
                     <?php
@@ -63,7 +66,6 @@
                                         <li><a class="dropdown-item" href="liv.php">Liv Gönder</a></li>
                                         <li><a class="dropdown-item" href="friends.php">Arkadaşlar</a></li>
                                         <li><a class="dropdown-item" href="notifications.php">Bildirimler</a></li>
-                                        <li><a class="dropdown-item" href="save.php">Kaydedilenler</a></li>
                                         <li><hr class="dropdown-divider"></li>
                                         <li><a class="dropdown-item" href="settings.php">Ayarlar</a></li>
                                         <li><a class="dropdown-item" href="includes/transactions.php?exit">Çıkış Yap</a></li>
