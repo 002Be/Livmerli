@@ -19,7 +19,6 @@
         <?php navbar(); ?>
         <!-- Navbar} -->
 
-
         <!-- {Contents -->
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
             <div class="text-center">
@@ -45,7 +44,6 @@
             </div>
         </div>
         <!-- Contents} -->
-
 
         <!-- {Footer -->
         <div style="margin-bottom: 80px;"></div>

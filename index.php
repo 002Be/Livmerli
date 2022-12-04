@@ -160,7 +160,6 @@
         </div>
         <!-- Contents} -->
 
-
         <!-- {Footer -->
         <div style="margin-bottom: 80px;"></div>
         <?php footer(); ?>

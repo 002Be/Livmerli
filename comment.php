@@ -17,7 +17,6 @@
         <?php navbar(); ?>
         <!-- Navbar} -->
 
-
         <!-- {Contents -->
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
             <div class="text-center mt-5">
@@ -141,7 +140,6 @@
             </div>
         </div>
         <!-- Modals} -->
-
 
         <!-- {Footer -->
         <?php footer(); ?>

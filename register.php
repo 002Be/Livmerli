@@ -15,7 +15,6 @@
         <?php navbar(); ?>
         <!-- Navbar} -->
 
-
         <!-- {Contents -->
         <div class="container">
             <div class="text-center mt-5">
@@ -60,7 +59,6 @@
             </div>
         </div>
         <!-- Contents} -->
-
 
         <!-- {Footer -->
         <?php footer(); ?>

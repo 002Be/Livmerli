@@ -15,7 +15,6 @@
         <?php navbar(); ?>
         <!-- Navbar} -->
 
-
         <!-- {Contents -->
         <?php
             if(isset($_GET["user"])){
@@ -83,7 +82,6 @@
             </div>
         </div>
         <!-- Contents} -->
-
 
         <!-- {Footer -->
         <div style="margin-bottom: 80px;"></div>

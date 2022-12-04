@@ -19,15 +19,12 @@
         <?php navbar(); ?>
         <!-- Navbar} -->
 
-
         <!-- {Contents -->
             <?php
             if(isset($_GET["user"])){
                 $user = $_GET["user"];
             }
         ?>
-
-
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
             <div>
                 <h1 class="text-center"><strong class="titles">Kaydedilenler</strong></h1>
@@ -96,7 +93,6 @@
             </div>
         </div>
         <!-- Contents} -->
-
 
         <!-- {Footer -->
         <div style="margin-bottom: 80px;"></div>
