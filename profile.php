@@ -37,44 +37,39 @@
                 <!-- <textarea name="text" class="form-control mt-3" id="exampleFormControlTextarea1" style="height: 150px;" placeholder="Hakkımda" rows="3" required></textarea> -->
                 <!-- <button style="margin-top: 50px; width: 100px;" type="submit" class="btn btn-outline-primary">Kaydet</button> -->
                 <hr>
-                <h3 class="titles">Livler</h3>
-                <form action="includes/transactions.php" method="POST">
+                <div class="btn-group" style="float: left; margin-bottom: 10px;">
+                    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Listeleme Türü
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="profile.php?paylasilanlar&user=<?php echo $user; ?>">Paylaşılanlar</a></li>
+                        <li><a class="dropdown-item" href="profile.php?kaydedilenler&user=<?php echo $user; ?>">Kaydedilenler</a></li>
+                        <li><a class="dropdown-item" href="profile.php?begenilenler&user=<?php echo $user; ?>">Beğenilenler</a></li>
+                    </ul>
+                </div>
+                <form style="clear: both;" action="includes/transactions.php" method="POST">
                     <?php
-                        $sorgu = $conn->prepare("SELECT * FROM liv WHERE username=? AND status=1 ORDER BY sendDate DESC");
-                        $sorgu->execute([$user]);
-                        while ($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)) {
+                        if(isset($_GET["begenilenler"])){
+                            ?><h3 class="titles">Beğenilenler</h3><?php
+                            $sorgu = $conn->prepare("SELECT * FROM liv, liv_like WHERE liv.status=1 AND liv_like.username=? AND liv.id=liv_like.livId ORDER BY liv.sendDate DESC");
+                            $sorgu->execute([$user]);
+                        }elseif(isset($_GET["kaydedilenler"])){
+                            ?><h3 class="titles">Kaydedilenler</h3><?php
+                            $sorgu = $conn->prepare("SELECT * FROM liv, liv_save WHERE liv.status=1 AND liv_save.username=? AND liv.id=liv_save.livId ORDER BY liv.sendDate DESC");
+                            $sorgu->execute([$user]);
+                        }else{
+                            ?><h3 class="titles">Paylaşılanlar</h3><?php
+                            $sorgu = $conn->prepare("SELECT * FROM liv WHERE status=1 AND senderUsername=? ORDER BY liv.sendDate DESC");
+                            $sorgu->execute([$user]);
+                        }
+                        while ($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){
                             ?>
                                 <div class="card mt-3">
                                     <div class="card-header opacity-75 boxBackgroundColor">
-                                        <span style="float: left;"><?php echo $cikti["username"];?></span>
-                                        <span style="float: right;">
-                                            <div class="btn-group dropend">
-                                                <?php if(isset($_SESSION["Username"])){ ?>
-                                                    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                                        <?php timeDiff($cikti["sendDate"]); ?>
-                                                    </button>
-                                                <?php }else{ ?>
-                                                        <span class="badge rounded-pill text-bg-secondary" style="float: right;"><?php timeDiff($cikti["sendDate"]); ?></span>
-                                                <?php } ?>
-                                                    <ul class="dropdown-menu">
-                                                        <?php if($_SESSION["Username"]==$cikti["username"]){ ?>
-                                                            <form action="includes/transactions.php" method="POST">
-                                                                <li><button type="button" class="dropdown-item">Beğen</button></li>
-                                                                <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
-                                                                <li><button type="button" class="dropdown-item">Kaydet</button></li>
-                                                                <li><a name="editLiv" href="liv.php?id=<?php echo $cikti["id"]; ?>" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Düzenle</a></li>
-                                                                <li><button name="deleteLiv" value="<?php echo $cikti["id"]; ?>" type="submit" class="dropdown-item">Sil</button></li>
-                                                            </form>
-                                                        <?php }else{ ?>
-                                                            <form action="includes/transactions.php" method="POST">
-                                                                <li><button type="button" class="dropdown-item">Beğen</button></li>
-                                                                <li><button type="button" class="dropdown-item">Yorum Yap</button></li>
-                                                                <li><button type="button" class="dropdown-item">Kaydet</button></li>
-                                                                <li><button type="button" class="dropdown-item">Şikayet Et</button></li>
-                                                            </form>
-                                                    <?php } ?>
-                                            </div>
-                                        </span>
+                                        <span style="float: left;"><?php echo $cikti["senderUsername"];?></span>
+                                        <div class="btn-group dropend" style="float: right;">
+                                            <span class="badge rounded-pill text-bg-secondary" style="float: right; margin-top: 2px;"><?php timeDiff($cikti["sendDate"]); ?></span>
+                                        </div>
                                     </div>
                                     <div class="card-body boxBackgroundColor">
                                         <h5 class="card-title"><?php echo $cikti["title"] ?></h5>

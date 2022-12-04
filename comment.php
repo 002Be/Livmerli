@@ -60,9 +60,9 @@
                             $saveBackColor = "background-color: gainsboro;";
                         }
                     ?>
-                    <button type="submit" class="btn" style="<?php echo $likeBackColor ?>" name="likeLiv" value="<?php echo $_GET["id"]; ?>"><img src="images/heart.png" alt="Beğen"></button>
-                    <button type="button" class="btn" style="background-color: gainsboro;" data-bs-toggle="modal" data-bs-target="#commentLiv"><img src="images/chat.png" alt="Yorum Yap"></button>
-                    <button type="submit" class="btn" style="<?php echo $saveBackColor ?>" name="saveLiv" value="<?php echo $_GET["id"]; ?>"><img src="images/save.png" alt="Kaydet"></button>
+                    <button type="submit" class="btn" style="<?php echo $likeBackColor ?>" name="likeLiv" value="<?php echo $_GET["id"]; ?>"><img src="assets/images/heart.png" alt="Beğen"></button>
+                    <button type="button" class="btn" style="background-color: gainsboro;" data-bs-toggle="modal" data-bs-target="#commentLiv"><img src="assets/images/chat.png" alt="Yorum Yap"></button>
+                    <button type="submit" class="btn" style="<?php echo $saveBackColor ?>" name="saveLiv" value="<?php echo $_GET["id"]; ?>"><img src="assets/images/save.png" alt="Kaydet"></button>
                     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#complaintsLiv" style="margin-right: 7px; background-color: gainsboro;"><img src="assets/images/flag.png" alt="Şikayet Et"></button>
                     <?php
                     if($_SESSION["Username"]==$cikti["username"]){ ?>
@@ -90,11 +90,9 @@
                                 <ul class="dropdown-menu">
                                     <form action="includes/transactions.php" method="POST">
                                         <button type="button" class="btn" name="likeLiv" value="<?php echo $cikti["id"]; ?>" style="<?php likeBackColor($cikti["id"]); ?>; margin-left: 7px;"><img src="assets/images/heart.png" alt="Beğen"></button>
-                                        <a href="#" class="btn" style="background-color: gainsboro;"><img src="assets/images/chat.png" alt="Yorum Yap"></a>
                                         <a href="comment.php?id=<?php echo $cikti["id"]; ?>" class="btn" style="margin-right: 7px; background-color: gainsboro;"><img src="assets/images/flag.png" alt="Şikayet Et"></a>
                                         <?php
                                         if($_SESSION["Username"]==$cikti["username"]){ ?>
-                                        <a href="#" class="btn" style="background-color: gainsboro;"><img src="assets/images/edit.png" alt="Düzenle"></a>
                                         <button type="button" class="btn" style="background-color: gainsboro; margin-right: 7px;" name="deleteLiv" value="<?php echo $cikti["id"]; ?>"><img src="assets/images/delete4.png" alt="Sil"></button>
                                         <?php
                                         } ?>
