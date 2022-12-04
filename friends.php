@@ -2,8 +2,8 @@
     include("sections.php");
     control();
 
-    $sorgu = $conn->prepare("SELECT * FROM friends");
-    $sorgu->execute();
+    $sorgu = $conn->prepare("SELECT * FROM friends WHERE username=?");
+    $sorgu->execute([$_SESSION["Username"]]);
 ?>
 <!doctype html>
 <html lang="en">
@@ -19,7 +19,6 @@
         <?php navbar(); ?>
         <!-- Navbar} -->
 
-
         <!-- {Contents -->
         <div class="container float-center mt-5 mx-auto" style="width: 800px;">
             <div class="text-center">
@@ -33,9 +32,7 @@
                 </div>
             </form>
             <?php
-                while($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){ 
-                    if($_SESSION["Username"]==$cikti["username"]){?>
-                
+                while($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){ ?>
                     <div class="card mt-3 float-center mx-auto" style="width: 30rem;">
                         <div class="btn-group dropend">
                             <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -49,11 +46,9 @@
                             </ul>
                         </div>
                     </div> <?php
-                    }
-                } ?>
+                    } ?>
         </div>
         <!-- Contents} -->
-
 
         <!-- {Footer -->
         <div style="margin-bottom: 80px;"></div>

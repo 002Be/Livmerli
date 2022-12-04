@@ -26,8 +26,8 @@
             <?php
                 if(isset($_GET["id"])){
                     $id = $_GET["id"];
-                    $sorgu = $conn->prepare("SELECT * FROM liv WHERE id=$id ORDER BY sendDate DESC");
-                    $sorgu->execute();
+                    $sorgu = $conn->prepare("SELECT * FROM liv WHERE id=? ORDER BY sendDate DESC");
+                    $sorgu->execute([$id]);
                     $cikti = $sorgu->fetch(PDO::FETCH_ASSOC);
                     ?>
                         <div class="float-center mt-5 mx-auto" style="width: 400px;">

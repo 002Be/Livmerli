@@ -2,8 +2,8 @@
     include("sections.php");
     control();
 
-    $sorgu = $conn->prepare("SELECT * FROM friend_request");
-    $sorgu->execute();
+    $sorgu = $conn->prepare("SELECT * FROM friend_request WHERE requestUsername=?");
+    $sorgu->execute([$_SESSION["Username"]]);
 ?>
 <!doctype html>
 <html lang="en">
@@ -26,23 +26,20 @@
                 <h1><strong class="titles">Bildirimler</strong></h1>
                 <hr>
                 <?php
-                    while($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){
-                        if($_SESSION["Username"]==$cikti["requestUsername"]){
-                            ?>
-                                <div class="card mt-3">
-                                    <div class="card-header opacity-75 ">
-                                        <span class="badge rounded-pill text-bg-success">Arkadaşlık İsteği</span>
-                                    </div>
-                                    <div class="card-body">
-                                        <h5 class="card-title">Gönderen : <?php echo $cikti["username"] ?></h5>
-                                        <form action="includes/transactions.php" method="POST">
-                                            <button name="acceptRequest" value="<?php echo $cikti["username"] ?>" type="submit" class="btn btn-outline-success">Kabul Et</button>
-                                            <button name="rejectRequest" value="<?php echo $cikti["username"] ?>" type="submit" class="btn btn-outline-danger">Reddet</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            <?php
-                        }
+                    while($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){?>
+                        <div class="card mt-3">
+                            <div class="card-header opacity-75 ">
+                                <span class="badge rounded-pill text-bg-success">Arkadaşlık İsteği</span>
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">Gönderen : <?php echo $cikti["username"] ?></h5>
+                                <form action="includes/transactions.php" method="POST">
+                                    <button name="acceptRequest" value="<?php echo $cikti["username"] ?>" type="submit" class="btn btn-outline-success">Kabul Et</button>
+                                    <button name="rejectRequest" value="<?php echo $cikti["username"] ?>" type="submit" class="btn btn-outline-danger">Reddet</button>
+                                </form>
+                            </div>
+                        </div>
+                    <?php
                     }
                 ?>
             </div>
