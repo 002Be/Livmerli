@@ -51,15 +51,15 @@
                     <?php
                         if(isset($_GET["begenilenler"])){
                             ?><h3 class="titles">Beğenilenler</h3><?php
-                            $sorgu = $conn->prepare("SELECT * FROM liv, liv_like WHERE liv.status=1 AND liv_like.username=? AND liv.id=liv_like.livId ORDER BY liv.sendDate DESC");
+                            $sorgu = $conn->prepare("SELECT liv.username AS senderUsername, liv.sendDate, liv.title, liv.text FROM liv, liv_like WHERE liv.status=1 AND liv_like.username=? AND liv.id=liv_like.livId ORDER BY liv.sendDate DESC");
                             $sorgu->execute([$user]);
                         }elseif(isset($_GET["kaydedilenler"])){
                             ?><h3 class="titles">Kaydedilenler</h3><?php
-                            $sorgu = $conn->prepare("SELECT * FROM liv, liv_save WHERE liv.status=1 AND liv_save.username=? AND liv.id=liv_save.livId ORDER BY liv.sendDate DESC");
+                            $sorgu = $conn->prepare("SELECT liv.username AS senderUsername, liv.sendDate, liv.title, liv.text FROM liv, liv_save WHERE liv.status=1 AND liv_save.username=? AND liv.id=liv_save.livId ORDER BY liv.sendDate DESC");
                             $sorgu->execute([$user]);
                         }else{
                             ?><h3 class="titles">Paylaşılanlar</h3><?php
-                            $sorgu = $conn->prepare("SELECT * FROM liv WHERE status=1 AND senderUsername=? ORDER BY liv.sendDate DESC");
+                            $sorgu = $conn->prepare("SELECT username AS senderUsername, sendDate, title, text FROM liv WHERE status=1 AND username=? ORDER BY liv.sendDate DESC");
                             $sorgu->execute([$user]);
                         }
                         while ($cikti = $sorgu->fetch(PDO::FETCH_ASSOC)){
