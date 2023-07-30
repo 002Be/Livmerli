@@ -1,6 +1,19 @@
 # Livmerli
 Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçlar.
 
+### Ana Sayfa
+![Ana Sayfa](GitHub_Items/Yubirs_AnaSayfa.png)
+### Restoranlar Sayfası
+![Blog Sayfası](GitHub_Items/Yubirs_Restoranlar.png)
+### Restoran Sayfası
+![Blog Sayfası](GitHub_Items/Yubirs_Restoran.png)
+### Ödeme Sayfası
+![Admin Kategoriler](GitHub_Items/Yubirs_Odeme.png)
+### Admin Panel | Yemekler Sayfası
+![Admin Makaleler](GitHub_Items/Yubirs_Yemekler.png)
+### Admin Panel | İşletme Sayfası
+![Admin Sayfalar](GitHub_Items/Yubirs_Isletme.png)
+
 # Bilgilendirme
 İlk büyük PHP projem, kendi kendime çalışarak sosyal web sitesinde barınması gereken tüm özellikleri koymaya çalışıyorum. Ayrıntılı bilgi sayfası projenin ilerleyen zamanlarında eklenecektir.
 
