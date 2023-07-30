@@ -26,7 +26,7 @@ Kendi kendime çalışarak sosyal web sitesinde barınması gereken tüm özelli
 - 28.11.2022 | Sadece arkadaş Livlerini görme eklendi.
 - 28.11.2022 | Arkadaşlık isteği gönderme eklendi.
 - 28.11.2022 | Profiller arası geçiş özelliği eklendi.
-- XX.11.2022 | Projeye başlangıç tarihi.
+- 28.11.2022 | Projeye başlangıç tarihi.
 
 # Ayrıntı
 - PHP 8.1.7
