@@ -11,7 +11,7 @@ Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçl
 ![Admin Kategoriler](GitHub_Items/Livmerli-Liv.png)
 
 # Bilgilendirme
-İlk büyük PHP projem, kendi kendime çalışarak sosyal web sitesinde barınması gereken tüm özellikleri koymaya çalışıyorum. Ayrıntılı bilgi sayfası projenin ilerleyen zamanlarında eklenecektir.
+Kendi kendime çalışarak sosyal web sitesinde barınması gereken tüm özellikleri koymaya çalışıyorum. Ayrıntılı bilgi sayfası projenin ilerleyen zamanlarında eklenecektir.
 
 # Durum
 - 04.12.2022 | Profil sayfasına beğenilenler, kaydedilenler ve paylaşılanlar kısmı eklendi.
