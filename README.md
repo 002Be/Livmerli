@@ -1,18 +1,14 @@
 # Livmerli
-Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçlar.
+Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçlayan bir platformdur. Livmerli, kullanıcılarına insanların birbirleriyle bağlantı kurmalarını, bilgi paylaşmalarını ve deneyimlerini paylaşmalarını sağlar. Livmerli, kullanıcıların profillerini oluşturmasına olanak tanır ve böylece kullanıcılar kendilerini tanıtabilir, ilgi alanlarını paylaşabilir ve diğer kullanıcılarla ortak noktalar bulabilir. Platform, kullanıcıların mesajlaşma yoluyla birbirleriyle iletişim kurmalarına olanak sağlar, böylece insanlar fikir alışverişinde bulunabilir, tartışmalar yapabilir veya sadece sohbet edebilirler.
 
 ### Ana Sayfa
-![Ana Sayfa](GitHub_Items/Yubirs_AnaSayfa.png)
-### Restoranlar Sayfası
-![Blog Sayfası](GitHub_Items/Yubirs_Restoranlar.png)
-### Restoran Sayfası
-![Blog Sayfası](GitHub_Items/Yubirs_Restoran.png)
-### Ödeme Sayfası
-![Admin Kategoriler](GitHub_Items/Yubirs_Odeme.png)
-### Admin Panel | Yemekler Sayfası
-![Admin Makaleler](GitHub_Items/Yubirs_Yemekler.png)
-### Admin Panel | İşletme Sayfası
-![Admin Sayfalar](GitHub_Items/Yubirs_Isletme.png)
+![Ana Sayfa](GitHub_Items/Livmerli-AnaSayfa.png)
+### Profil Sayfası
+![Blog Sayfası](GitHub_Items/Livmerli-Profil.png)
+### Bildirimler Sayfası
+![Blog Sayfası](GitHub_Items/Livmerli-Bildirimler.png)
+### Liv Gönderme Sayfası
+![Admin Kategoriler](GitHub_Items/Livmerli-Liv.png)
 
 # Bilgilendirme
 İlk büyük PHP projem, kendi kendime çalışarak sosyal web sitesinde barınması gereken tüm özellikleri koymaya çalışıyorum. Ayrıntılı bilgi sayfası projenin ilerleyen zamanlarında eklenecektir.
@@ -35,9 +31,6 @@ Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçl
 # Ayrıntı
 - PHP 8.1.7
 - Bootstrap 5.2.1
-
-# Not
-Frontendin büyük kısmı hazır alınmıştır.
 
 # Lisans
 Proje [MIT License](./License) altında yayınlanmaktadır.
