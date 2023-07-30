@@ -36,5 +36,8 @@ Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçl
 - PHP 8.1.7
 - Bootstrap 5.2.1
 
+# Not
+Frontendin büyük kısmı hazır alınmıştır.
+
 # Lisans
 Proje [MIT License](./License) altında yayınlanmaktadır.
