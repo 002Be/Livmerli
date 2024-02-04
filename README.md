@@ -1,6 +1,5 @@
 # Livmerli
-Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçlayan bir platformdur. Livmerli, kullanıcılarına insanların birbirleriyle bağlantı kurmalarını, bilgi paylaşmalarını ve deneyimlerini paylaşmalarını sağlar. Livmerli, kullanıcıların profillerini oluşturmasına olanak tanır ve böylece kullanıcılar kendilerini tanıtabilir, ilgi alanlarını paylaşabilir ve diğer kullanıcılarla ortak noktalar bulabilir. Platform, kullanıcıların mesajlaşma yoluyla birbirleriyle iletişim kurmalarına olanak sağlar, böylece insanlar fikir alışverişinde bulunabilir, tartışmalar yapabilir veya sadece sohbet edebilirler. 
-[Projeyi Önizle](https://www.berkeozdemir.com.tr/project/Livmerli/index.php)
+Livmerli, insanların web üzerinden birbirleriyle etkileşim kurmasını amaçlayan bir platformdur. Livmerli, kullanıcılarına insanların birbirleriyle bağlantı kurmalarını, bilgi paylaşmalarını ve deneyimlerini paylaşmalarını sağlar. Livmerli, kullanıcıların profillerini oluşturmasına olanak tanır ve böylece kullanıcılar kendilerini tanıtabilir, ilgi alanlarını paylaşabilir ve diğer kullanıcılarla ortak noktalar bulabilir. Platform, kullanıcıların mesajlaşma yoluyla birbirleriyle iletişim kurmalarına olanak sağlar, böylece insanlar fikir alışverişinde bulunabilir, tartışmalar yapabilir veya sadece sohbet edebilirler.
 
 ### Ana Sayfa
 ![Ana Sayfa](GitHub_Items/Livmerli-AnaSayfa.png)
